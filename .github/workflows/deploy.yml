@@ -16,13 +16,13 @@ jobs:
         terraform_version: 1.x
 
     - name: Terraform Init
-      run: terraform init dev/
+      run: terraform -chdir=dev/ init
 
     - name: Terraform Apply
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: terraform apply -auto-approve dev/
+      run: terraform -chdir=dev/ apply -auto-approve
 
     - name: Setup Ansible
       run: |
