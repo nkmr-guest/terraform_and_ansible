@@ -30,4 +30,4 @@ jobs:
         sudo apt-get install -y ansible
 
     - name: Ansible Playbook Run
-      run: ansible-playbook your-playbook.yml
+      run: ansible-playbook dev/site.yml
