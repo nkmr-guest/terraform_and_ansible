@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-west-2" # あなたの使用したいリージョンに変更してください
+  region = "ap-northeast-1" # あなたの使用したいリージョンに変更してください
 }
 
 resource "aws_instance" "ansible_host" {
