@@ -13,11 +13,14 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
 
-    - name: Destroy EC2 instance
-      run: terraform -chdir=dev/ destroy -auto-approve
+    - name: Remove Terraform lock file
+      run: rm -f dev/terraform.lock.hcl
+
+    - name: Initialize Terraform
+      run: terraform -chdir=dev/ init
 
     - name: Destroy EC2 instance
-      run: terraform destroy -auto-approve
+      run: terraform -chdir=dev/ destroy -auto-approve
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
