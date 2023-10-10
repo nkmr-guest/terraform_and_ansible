@@ -2,3 +2,10 @@
   become: yes
   roles:
     - nginx
+
+  tasks:
+    - name: Ensure sshd is running
+      service:
+        name: sshd
+        state: started
+        enabled: yes
