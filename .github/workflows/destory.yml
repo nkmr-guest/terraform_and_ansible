@@ -13,8 +13,8 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
 
-    - name: Initialize Terraform
-      run: terraform init
+    - name: Destroy EC2 instance
+      run: terraform -chdir=dev/ destroy -auto-approve
 
     - name: Destroy EC2 instance
       run: terraform destroy -auto-approve
