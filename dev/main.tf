@@ -1,9 +1,9 @@
 provider "aws" {
-  region = "ap-northeast-3"
+  region = "ap-northeast-1"
 }
 
 resource "aws_instance" "ansible_host" {
-  ami           = "ami-063cd3af637f3e426"
+  ami           = "ami-0fd8f5842685ca887"
   instance_type = "t2.micro"
 
   tags = {
