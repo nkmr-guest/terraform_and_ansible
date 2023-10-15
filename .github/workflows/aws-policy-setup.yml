@@ -3,7 +3,7 @@ name: AWS Policy Setup
 on:
   push:
     paths:
-      - '.aws/policies/GitHubActionsS3andEC2Operations.json'
+      - 'policies/GitHubActionsS3andEC2Operations.json'
 
 jobs:
   setup-policy:
