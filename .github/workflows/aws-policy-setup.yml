@@ -23,3 +23,7 @@ jobs:
       run: |
         POLICY_ARN=$(aws iam create-policy --policy-name GitHubActionsS3andEC2Operations --policy-document file://policies/GitHubActionsS3andEC2Operations.json --query 'Policy.Arn' --output text)
         echo "Policy ARN: $POLICY_ARN"
+
+    - name: Attach policy to IAM user
+      run: |
+        aws iam attach-user-policy --user-name github-deploy --policy-arn arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:policy/GitHubActionsS3andEC2Operations
