@@ -1,0 +1,25 @@
+name: AWS Policy Setup
+
+on:
+  push:
+    paths:
+      - '.aws/policies/GitHubActionsS3andEC2Operations.json'
+
+jobs:
+  setup-policy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up AWS CLI
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-northeast-1
+
+    - name: Create or Update IAM Policy
+      run: |
+        POLICY_ARN=$(aws iam create-policy --policy-name GitHubActionsS3andEC2Operations --policy-document file://.aws/policies/GitHubActionsS3andEC2Operations.json --query 'Policy.Arn' --output text)
+        echo "Policy ARN: $POLICY_ARN"
