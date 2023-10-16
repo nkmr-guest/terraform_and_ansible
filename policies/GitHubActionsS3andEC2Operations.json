@@ -33,6 +33,20 @@
         "ec2:StopInstances"
       ],
       "Resource": "*"
-    }
+    },
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+   	   "Federated": "arn:aws:iam::134412793160:oidc-provider/token.actions.githubusercontent.com"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      	"Condition": {
+        	"StringEquals": {
+                	"token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+                	"token.actions.githubusercontent.com:sub": "repo:nkmr/test-ansible"
+                }
+            }
+	}
   ]
 }
