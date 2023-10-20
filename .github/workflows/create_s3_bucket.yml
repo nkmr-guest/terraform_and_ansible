@@ -19,6 +19,7 @@ jobs:
 
     - name: Create S3 Bucket
       run: |
-        BUCKET_NAME=dev-terraform-state-bucket
+        # main.tf からバケット名を取得
+        BUCKET_NAME=$(terraform -chdir=dev output -raw s3_bucket_name)
         aws s3api create-bucket --bucket $BUCKET_NAME --region ap-northeast-1 --create-bucket-configuration LocationConstraint=ap-northeast-1
-
+        echo "BUCKET_NAME=${BUCKET_NAME}" >> $GITHUB_ENV

@@ -20,11 +20,9 @@ output "instance_ip" {
 
 terraform {
   backend "s3" {
-    bucket         = "dev-terraform-state-bucket"   # Dev環境用のS3バケットの名前を指定します。
-    key            = "terraform.tfstate"     # S3に保存するステートファイルの名前を指定します。
-    region         = "ap-northeast-1"        # S3バケットが存在するリージョンを指定します。
-    encrypt       = true                    # ステートファイルをS3に保存する際に暗号化するかどうかを指定します（オプション）。
-    # dynamodb_table = "your-dynamodb-table"  # ステートのロックを行うためのDynamoDBテーブル名を指定します（オプション）。
+    bucket         = "${var.s3_bucket_name}"
+    key            = "terraform.tfstate"
+    region         = "ap-northeast-1"
+    encrypt        = true
   }
 }
-
