@@ -1,0 +1,30 @@
+name: Install Terraform and Ansible on Self-hosted Runner
+
+on:
+  workflow_dispatch: # このトリガーはあなたのニーズに合わせて変更してください
+
+jobs:
+  setup:
+    runs-on: self-hosted # self-hosted runnerを使用
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # Terraformのインストール
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.2.0 # 希望のTerraformのバージョンを指定してください
+
+    # Ansibleのインストール
+    - name: Install Ansible
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ansible
+
+    # TerraformとAnsibleのバージョン確認
+    - name: Check versions
+      run: |
+        terraform --version
+        ansible --version
