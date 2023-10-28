@@ -11,20 +11,23 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    # Terraformのインストール
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: 1.2.0 # 希望のTerraformのバージョンを指定してください
+    - name: Install Terraform
+      run: |
+        sudo yum install -y unzip
+        wget https://releases.hashicorp.com/terraform/0.14.15/terraform_0.14.15_linux_amd64.zip
+        unzip terraform_0.14.15_linux_amd64.zip
+        sudo mv terraform /usr/bin/
+      shell: /usr/bin/bash -e {0}
 
-    # Ansibleのインストール
+    - name: Verify Terraform Installation
+      run: terraform --version
+      shell: /usr/bin/bash -e {0}
+
     - name: Install Ansible
       run: |
-        sudo apt-get update
-        sudo apt-get install -y ansible
+        sudo yum install -y ansible
+      shell: /usr/bin/bash -e {0}
 
-    # TerraformとAnsibleのバージョン確認
-    - name: Check versions
-      run: |
-        terraform --version
-        ansible --version
+    - name: Verify Ansible Installation
+      run: ansible --version
+      shell: /usr/bin/bash -e {0}
