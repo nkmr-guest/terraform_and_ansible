@@ -20,9 +20,6 @@ jobs:
     - name: Terraform Init
       run: terraform init -reconfigure -backend-config=dev/backend.tf
 
-    - name: Create S3 Bucket
-      run: |
-        # main.tf からバケット名を取得
-        BUCKET_NAME=$(terraform -chdir=dev output -raw s3_bucket_name)
-        aws s3api create-bucket --bucket $BUCKET_NAME --region ap-northeast-1 --create-bucket-configuration LocationConstraint=ap-northeast-1
-        echo "BUCKET_NAME=${BUCKET_NAME}" >> $GITHUB_ENV
+    - name: Terraform Apply to create only the S3 bucket
+      run: terraform apply -auto-approve -target=terraform.backend["s3"]
+
