@@ -18,7 +18,3 @@ output "instance_ip" {
   description = "Public IP of the Ansible Host"
 }
 
-terraform {
-  backend "s3" {
-  }
-}
