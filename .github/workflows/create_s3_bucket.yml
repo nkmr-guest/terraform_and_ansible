@@ -18,7 +18,7 @@ jobs:
         aws-region: ap-northeast-1  # 任意のリージョンを指定
 
     - name: Terraform Init
-      run: terraform -chdir=dev/ init
+      run: terraform init -backend-config=dev/backend.tf
 
     - name: Create S3 Bucket
       run: |

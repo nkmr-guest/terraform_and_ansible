@@ -20,9 +20,5 @@ output "instance_ip" {
 
 terraform {
   backend "s3" {
-    bucket         = "${var.s3_bucket_name}"
-    key            = "terraform.tfstate"
-    region         = "ap-northeast-1"
-    encrypt        = true
   }
 }
