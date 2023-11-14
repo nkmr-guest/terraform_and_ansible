@@ -32,4 +32,5 @@ jobs:
     - name: Terraform Apply
       run: |
         cd environments/dev
-        terraform apply -auto-approve
+        terraform apply -target=module s3_bucket
+
