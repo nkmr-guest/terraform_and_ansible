@@ -17,6 +17,7 @@ module "s3_bucket" {
   source = "../../modules/s3"
 
   bucket_name = "dev-terraform-bucket-name-3498403"
+  bucket_acl  = "private"  // または任意のACL設定
   tags        = {
     Environment = "Dev"
   }
