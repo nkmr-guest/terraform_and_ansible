@@ -7,7 +7,6 @@ jobs:
   create_bucket:
     runs-on: [self-hosted, Linux, X64]
 
-
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -24,6 +23,11 @@ jobs:
       with:
         terraform_version: 1.5.0
 
+    - name: Prepare Terraform Local Backend
+      run: |
+        mv environments/dev/backend.tf environments/dev/backend.tf.backup  
+        cp environments/dev/backend.local.tf environments/dev/backend.tf
+
     - name: Terraform Init
       run: |
         cd environments/dev
@@ -34,3 +38,8 @@ jobs:
         cd environments/dev
         terraform apply -auto-approve -target=module.s3_bucket
 
+    - name: Switch to S3 Backend
+      run: |
+        mv environments/dev/backend.tf.backup environments/dev/backend.tf
+        cd environments/dev
+        terraform init
