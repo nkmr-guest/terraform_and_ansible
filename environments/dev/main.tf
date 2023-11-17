@@ -10,7 +10,7 @@ module "ansible_host" {
   tags       = {
     Name = "AnsibleHost"
   }
-  key_name   = "test_ansible"
+  key_name   = "ssh_ec2_instance"
 }
 
 module "s3_bucket" {
