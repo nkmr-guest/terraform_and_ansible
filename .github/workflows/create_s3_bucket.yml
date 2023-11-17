@@ -26,7 +26,7 @@ jobs:
     - name: Prepare Terraform Local Backend
       run: |
         mv environments/dev/backend.tf environments/dev/backend.tf.backup  
-        cp environments/dev/backend.local.tf environments/dev/backend.tf
+        mv environments/dev/backend.local.tf environments/dev/backend.tf
 
     - name: Terraform Init
       run: |
