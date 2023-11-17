@@ -16,10 +16,14 @@ jobs:
         terraform_version: 1.5.0
 
     - name: Terraform Init
-      run: terraform init
+      run: |
+        cd environments/dev
+        terraform init
 
     - name: Terraform Paln
-      run: terraform plan
+      run:  |
+        cd environments/dev
+        terraform plan
 
     - name: Terraform Apply
       env:
