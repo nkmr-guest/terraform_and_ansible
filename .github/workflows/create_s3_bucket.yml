@@ -42,4 +42,4 @@ jobs:
       run: |
         mv environments/dev/backend.tf.backup environments/dev/backend.tf
         cd environments/dev
-        terraform init
+        terraform init -migrate-state
