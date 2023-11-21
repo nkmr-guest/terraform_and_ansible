@@ -4,5 +4,5 @@ output "instance_ip" {
 }
 
 output "instance_private_ip" {
-  value = module.ec2_module.instance_ip
+  value = aws_instance.ansible_host.instance_ip
 }
