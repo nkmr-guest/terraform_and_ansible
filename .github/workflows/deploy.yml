@@ -60,4 +60,4 @@ jobs:
     - name: Ansible Playbook Run
       run: |
         cd ansible
-        ansible-playbook -i ./ansible_inventory.ini /site.yml -e 'ansible_ssh_common_args="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"'
+        ansible-playbook -i ./ansible_inventory.ini ./site.yml -e 'ansible_ssh_common_args="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"'
