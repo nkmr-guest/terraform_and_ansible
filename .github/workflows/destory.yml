@@ -1,11 +1,11 @@
-name: Destroy EC2 instance
+name: Destroy terraform
 
 on:
   workflow_dispatch:  # 手動で実行するためのトリガー
 
 jobs:
   destroy:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -13,15 +13,10 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
 
-    - name: Remove Terraform lock file
-      run: rm -f dev/terraform.lock.hcl
-
-    - name: Initialize Terraform
-      run: terraform -chdir=dev/ init
-
     - name: Destroy EC2 instance
-      run: terraform -chdir=dev/ destroy -auto-approve
+      run: |
+        cd environments/dev
+        terraform destroy -auto-approve
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: ap-northeast-3
