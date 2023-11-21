@@ -1,4 +1,4 @@
-name: Deploy to AWS
+name: EC2&Playbook Deploy to AWS
 
 on:
   workflow_dispatch:
