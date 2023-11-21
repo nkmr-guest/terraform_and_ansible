@@ -13,6 +13,11 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
 
+    - name: Terraform Init
+      run: |
+        cd environments/dev
+        terraform init
+
     - name: Destroy EC2 instance
       run: |
         cd environments/dev
