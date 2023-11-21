@@ -42,7 +42,7 @@ jobs:
       run: |
         mv environments/dev/backend.tf.backup environments/dev/backend.tf
         cd environments/dev
-        yes | terraform-bin init -migrate-state
+        echo "yes" | terraform-bin init -migrate-state
 
     - name: Terraform Paln
       run:  |
