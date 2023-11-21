@@ -4,5 +4,5 @@ output "instance_ip" {
 }
 
 output "instance_private_ip" {
-  value = module.ansible_host.instance_ip
+  value = module.ansible_host.instance_private_ip
 }
