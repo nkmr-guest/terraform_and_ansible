@@ -47,9 +47,9 @@ jobs:
 
     - name: Get EC2 instance IP and Create Inventory
       run: |
-        cd ansible
+        cd environments/dev
         INSTANCE_IP=$(terraform-bin output -raw instance_private_ip)
-        echo "[ansible_host]" > ./ansible_inventory.ini
+        echo "[ansible_host]" > ../../ansible/ansible_inventory.ini
         echo "$INSTANCE_IP ansible_ssh_user=ec2-user ansible_ssh_private_key_file=/tmp/deploy_key" >> ./ansible_inventory.ini
 
     - name: Display the content of the inventory file
@@ -60,4 +60,4 @@ jobs:
     - name: Ansible Playbook Run
       run: |
         cd ansible
-        ansible-playbook -i ./ansible_inventory.ini ./site.yml -e 'ansible_ssh_common_args="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"'
+        ansible-playbook -i ./ansible_inventory.ini /site.yml -e 'ansible_ssh_common_args="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"'
