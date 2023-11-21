@@ -1,5 +1,5 @@
 output "instance_ip" {
-  value       = module.ansible_host.public_ip
+  value       = module.ansible_host.instance_public_ip
   description = "Public IP of the Ansible Host"
 }
 
