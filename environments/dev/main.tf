@@ -2,6 +2,13 @@ provider "aws" {
   region = "ap-northeast-1"
 }
 
+module "vpc" {
+  source = "../../modules/vpc"
+
+  vpc_cidr_block = "10.0.0.0/16"  # 任意のCIDRブロックを指定
+  vpc_name       = "MyVPC"
+}
+
 module "ansible_host" {
   source = "../../modules/ec2"
 
