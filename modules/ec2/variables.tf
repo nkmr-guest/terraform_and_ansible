@@ -19,3 +19,8 @@ variable "key_name" {
   description = "The key name to use for the instance."
   type        = string
 }
+
+variable "sg_id" {
+  description = "The Security Group ID to use for the instance"
+  type        = string
+}
