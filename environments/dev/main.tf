@@ -40,3 +40,4 @@ module ec2_sg {
     port        = [22, 80, 443]
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
