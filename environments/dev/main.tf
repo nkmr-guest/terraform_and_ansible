@@ -1,8 +1,6 @@
 provider "aws" {
   region = "ap-northeast-1"
 
-  max_retries = 2  # タイムアウトが発生した場合にリトライする回数
-  retry_delay  = 5  # リトライの間隔（秒）
 }
 
 module "vpc" {
