@@ -1,9 +1,9 @@
-variable "vpc_cidr_block" {
-  description = "CIDR block for the VPC"
-  type        = string
-}
-
-variable "vpc_name" {
-  description = "Name for the VPC"
-  type        = string
+variable "vpc_config" {
+  type = object({
+    NameTag              = string
+    cidr_block           = string
+    enable_dns_support   = bool
+    enable_dns_hostnames = bool
+    subnet_count         = number
+  })
 }

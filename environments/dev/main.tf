@@ -5,8 +5,13 @@ provider "aws" {
 module "vpc" {
   source = "../../modules/vpc"
 
-  vpc_cidr_block = "10.0.0.0/16"  # 任意のCIDRブロックを指定
-  vpc_name       = "MyVPC"
+  vpc_config = {
+    NameTag              = "MyVPC"
+    cidr_block           = "10.2.0.0/16"
+    enable_dns_support   = true
+    enable_dns_hostnames = true
+    subnet_count         = 2
+  }
 }
 
 module "ec2_sg" {
@@ -29,7 +34,11 @@ module "ec2" {
     Name = "AnsibleHost"
   }
   key_name   = "ssh_ec2_instance"
-  sg_id      = module.ec2_sg.sg_id
+  ec2_config = {
+    vpc_id           = module.vpc.vpc_id
+    public_subnet_id = module.vpc.public_subnet_id
+    sg_id            = module.ec2_sg.sg_id
+  }
 }
 
 module "s3_bucket" {
