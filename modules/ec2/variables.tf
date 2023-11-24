@@ -20,6 +20,6 @@ variable "key_name" {
   type        = string
 }
 
-variable "ec2_config" {
-  sg_id   = string
+variable "sg_id" {
+  type   = string
 }
