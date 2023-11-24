@@ -21,7 +21,7 @@ module "ec2_sg" {
   }
 }
 
-module "ansible_host" {
+module "ec2" {
   source = "../../modules/ec2"
 
   ami        = "ami-0fd8f5842685ca887"

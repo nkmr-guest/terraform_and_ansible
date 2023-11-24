@@ -28,6 +28,5 @@ variable "ec2_config" {
     NameTag          = string
     instance_type    = string
     instance_count   = number
-    key_name         = string
   })
 }
