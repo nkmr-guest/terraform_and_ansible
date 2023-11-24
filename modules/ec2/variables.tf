@@ -20,7 +20,7 @@ variable "key_name" {
   type        = string
 }
 
-variable "ec2_sg" {
+variable "ec2_security_group" {
   type = object({
     vpc_id           = string
     sg_id            = string
