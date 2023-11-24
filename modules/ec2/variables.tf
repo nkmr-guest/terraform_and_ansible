@@ -20,11 +20,6 @@ variable "key_name" {
   type        = string
 }
 
-variable "sg_id" {
-  description = "The Security Group ID to use for the instance"
-  type        = string
-}
-
 variable "ec2_sg" {
   type = object({
     vpc_id           = string
