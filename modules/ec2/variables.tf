@@ -25,7 +25,7 @@ variable "sg_id" {
   type        = string
 }
 
-variable "ec2_congig" {
+variable "ec2_sg" {
   type = object({
     vpc_id           = string
     sg_id            = string
