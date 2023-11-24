@@ -24,3 +24,10 @@ variable "sg_id" {
   description = "The Security Group ID to use for the instance"
   type        = string
 }
+
+variable "ec2_config" {
+  type = object({
+    vpc_id           = string
+    sg_id            = string
+  })
+}
