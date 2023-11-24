@@ -27,11 +27,6 @@ jobs:
         cd environments/dev
         terraform init
 
-    - name: Terraform Paln
-      run:  |
-        cd environments/dev
-        terraform plan
-
     - name: Terraform Apply
       run: |
         cd environments/dev
