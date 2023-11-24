@@ -21,7 +21,5 @@ variable "key_name" {
 }
 
 variable "ec2_config" {
-  type = object({
-    sg_id   = string
-  })
+  sg_id   = string
 }
