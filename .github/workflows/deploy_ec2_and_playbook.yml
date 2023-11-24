@@ -28,7 +28,7 @@ jobs:
     - name: Terraform Paln
       run:  |
         cd environments/dev
-        terraform plan -timeout=5m
+        terraform plan
 
     - name: Terraform Apply
       run: |
