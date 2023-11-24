@@ -14,7 +14,7 @@ module ec2_sg {
 
   sg_config = {
     name        = "ec2_sg"
-    vpc_id      = module.my_vpc.vpc_id
+    vpc_id      = module.vpc.vpc_id
     protocol    = "tcp"
     port        = [22, 80, 443]
     cidr_blocks = ["0.0.0.0/0"]
