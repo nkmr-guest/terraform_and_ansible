@@ -19,22 +19,21 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_subnet" "public" {
-  count                   = var.vpc_config.subnet_count
   vpc_id                  = aws_vpc.MyFirstVPC.id
-  cidr_block              = cidrsubnet(aws_vpc.MyFirstVPC.cidr_block, 8, count.index) #10.2.0.0/24,10.2.1.0/24
+  cidr_block              = cidrsubnet(aws_vpc.MyFirstVPC.cidr_block, 8, 0) # 単一のサブネット
   map_public_ip_on_launch = true
-  availability_zone       = data.aws_availability_zones.available.names[count.index]
+  availability_zone       = data.aws_availability_zones.available.names[0]
   tags = {
-    Name = "${var.vpc_config.NameTag}-PublicSubnet${count.index}"
+    Name = "${var.vpc_config.NameTag}-PublicSubnet"
   }
 }
+
 resource "aws_subnet" "private" {
-  count                   = var.vpc_config.subnet_count
   vpc_id                  = aws_vpc.MyFirstVPC.id
-  cidr_block              = cidrsubnet(aws_vpc.MyFirstVPC.cidr_block, 8, count.index + var.vpc_config.subnet_count) #10.2.2.0/24,10.2.3.0/24
+  cidr_block              = cidrsubnet(aws_vpc.MyFirstVPC.cidr_block, 8, 1) # 単一のサブネット
   map_public_ip_on_launch = false
-  availability_zone       = data.aws_availability_zones.available.names[count.index]
+  availability_zone       = data.aws_availability_zones.available.names[0]
   tags = {
-    Name = "${var.vpc_config.NameTag}-PrivateSubnet${count.index}"
+    Name = "${var.vpc_config.NameTag}-PrivateSubnet"
   }
 }
