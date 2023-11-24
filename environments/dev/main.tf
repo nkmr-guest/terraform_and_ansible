@@ -9,7 +9,7 @@ module "vpc" {
   vpc_name       = "MyVPC"
 }
 
-module ec2_sg {
+module "ec2_sg" {
   source = "../../modules/security_group"
 
   sg_config = {
