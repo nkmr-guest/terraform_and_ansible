@@ -25,7 +25,7 @@ jobs:
     - name: Terraform Init
       run: |
         cd environments/dev
-        terraform init
+        terraform init -upgrade
 
     - name: Terraform Paln
       run:  |
