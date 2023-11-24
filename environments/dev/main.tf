@@ -29,7 +29,7 @@ module "ansible_host" {
     Name = "AnsibleHost"
   }
   key_name   = "ssh_ec2_instance"
-  sg_id      = module.ec2_security_group.sg_id 
+  sg_id      = module.ec2_sg.sg_id 
 }
 
 module "s3_bucket" {
