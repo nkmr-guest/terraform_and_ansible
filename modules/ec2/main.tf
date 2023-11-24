@@ -4,6 +4,7 @@ resource "aws_instance" "ansible_host" {
   vpc_security_group_ids = [
     var.sg_id
   ]
+  subnet_id     = var.subnet_id
   tags = var.tags
 
   key_name = var.key_name
