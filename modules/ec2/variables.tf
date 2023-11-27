@@ -20,10 +20,17 @@ variable "key_name" {
   type        = string
 }
 
-variable "ec2_config" {
-  type = object({
-    vpc_id           = string
-    public_subnet_id = list(string)
-    sg_id            = string
-  })
+variable "public_subnet_id" {
+  description = "The key name to use for the instance."
+  type        = string
+}
+
+variable "vpc_id" {
+  description = "The key name to use for the instance."
+  type        = string
+}
+
+variable "sg_id" {
+  description = "The key name to use for the instance."
+  type        = string
 }
