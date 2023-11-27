@@ -1,7 +1,7 @@
 name: Destroy terraform
 
 on:
-  workflow_dispatch:  # 手動で実行するためのトリガー
+  workflow_dispatch: # 手動トリガー
 
 jobs:
   destroy:

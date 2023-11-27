@@ -1,11 +1,11 @@
 name: Install Terraform and Ansible on Self-hosted Runner
 
 on:
-  workflow_dispatch: # このトリガーはあなたのニーズに合わせて変更してください
+  workflow_dispatch: # 手動トリガー
 
 jobs:
   setup:
-    runs-on: self-hosted # self-hosted runnerを使用
+    runs-on: self-hosted # aws ec2インスタンス(別途手動で作成済み)をself-hosted runnerとして使用
 
     steps:
     - name: Checkout repository

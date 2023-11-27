@@ -1,7 +1,7 @@
 name: EC2&Playbook Deploy to AWS
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # 手動トリガー
 
 jobs:
   deploy:
