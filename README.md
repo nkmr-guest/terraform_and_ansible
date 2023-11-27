@@ -71,25 +71,28 @@ ansible/
 
 ## ワークフローの詳細
 
-1. **aws-policy-setup.yml**
-   - **目的**: AWSポリシーのセットアップ
-   - **実施内容**: AWSポリシーの設定を行います。  
-※未実装
+1. **install_terraform_and_ansible.yml**
+   - **目的**: self-hosted runnerへのTerraformおよびAnsibleのインストール
+   - **実施内容**: インフラの構築や構成管理に必要なTerraformとAnsibleをインストールします。
 
-2. **destory.yml**
-   - **目的**: インフラの破棄
-   - **実施内容**: Terraformを使用してデプロイしたインフラを破棄します。
+2. **create_s3_bucket.yml**
+   - **目的**: S3バケットの作成
+   - **実施内容**: Terraformを使用してS3バケットを作成します。
 
 3. **deploy_ec2_and_playbook.yml**
    - **目的**: EC2のデプロイとAnsibleプレイブックの実行
    - **実施内容**: TerraformでEC2をデプロイし、Ansibleで構成管理を行います。
 
-4. **create_s3_bucket.yml**
-   - **目的**: S3バケットの作成
-   - **実施内容**: Terraformを使用してS3バケットを作成します。
+4. **destory.yml**
+   - **目的**: インフラの破棄
+   - **実施内容**: Terraformを使用してデプロイしたインフラを破棄します。  
+   ※一部エラーで失敗するためまだ未完了  
+   　s3のバケット内のオブジェクト(tfstate)が削除されていないためバケットの削除がコケる
 
-5. **install_terraform_and_ansible.yml**
-   - **目的**: self-hosted runnerへのTerraformおよびAnsibleのインストール
-   - **実施内容**: インフラの構築や構成管理に必要なTerraformとAnsibleをインストールします。
+5. **aws-policy-setup.yml**
+   - **目的**: AWSポリシーのセットアップ
+   - **実施内容**: AWSポリシーの設定を行います。  
+※未実装
+
 
 各ワークフローについての詳細な設定は、.github/workflows/ディレクトリの該当するファイルを参照してください。
