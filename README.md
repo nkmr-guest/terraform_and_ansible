@@ -1,6 +1,6 @@
-# プロジェクト概要
+# 概要
 
-このプロジェクトは、GitHub Actionsとセルフホストランナーを使用して、AWSインフラストラクチャのデプロイとAnsibleによる構成管理を実施するためのものです。
+GitHub Actionsとセルフホストランナーを使用して、AWSインフラストラクチャのデプロイとAnsibleによる構成管理を実施するためのものです。
 
 ## ディレクトリ構成
 
@@ -13,7 +13,7 @@
 ├── destory.yml                      # インフラの破棄
 ├── deploy_ec2_and_playbook.yml      # EC2のデプロイとAnsibleプレイブックの実行
 ├── create_s3_bucket.yml             # S3バケットの作成
-└── install_terraform_and_ansible.yml# TerraformおよびAnsibleのインストール
+└── install_terraform_and_ansible.yml# セルフホストランナー用TerraformおよびAnsibleのインストール
 ```
 
 ### Terraform インフラストラクチャ
@@ -27,8 +27,12 @@ environments/
 │   ├── variables.tf # Terraform変数定義
 │   └── outputs.tf   # Terraformアウトプット定義
 │
-└── prd/
-    └── ...           # 本番環境のTerraform構成（略）
+├── prd/
+│   └── ...           # 本番環境のTerraform構成（略）
+│
+└── backend.local.tf  # s3 bucket作成時にteraform initするとまだ作成していないため
+　　　　　　　　　　　　　エラーとなるので作成前にローカル-> s3と切り替えるための
+　　　　　　　　　　　　　ローカルバックエンド設定ファイル
 ```
 
 ### Terraform モジュール
